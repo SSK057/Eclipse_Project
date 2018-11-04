@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $Aval = $_POST['Aform'];
         $err = true;
     } else {
-        echo 'ERROR! 全ての入力フォームを入力してください。';
+        echo '全ての入力フォームを入力してください。';
     }
 }
 ?>
