@@ -1,5 +1,5 @@
 <?php
-
+#何かが投稿されたら実行
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Aform = array_fill(0, 4, '');
     $Qval = '';
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     value="<?php echo htmlspecialchars($Aform[1], ENT_QUOTES, 'UTF-8'); ?>">
     <input type="text" name="Aform[2]" placeholder="回答3を入力"
     value="<?php echo htmlspecialchars($Aform[2], ENT_QUOTES, 'UTF-8'); ?>">
-    <input type="text" name="Aform[3]" placeholder="回答4を入力"
+    <input type="text" name="Aform[3]" placeholder="正解を入力"
     value="<?php echo htmlspecialchars($Aform[3], ENT_QUOTES, 'UTF-8'); ?>">
 
     <input type="submit" value="Send!">
@@ -43,6 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
            foreach($Aval as $key => $value) {
                $_SESSION['Aval'][$key] = $value;
            }
+           #入力内容確認画面に遷移
            http_response_code(301);
            header( "Location:./Confirm.php");
            exit;

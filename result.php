@@ -10,6 +10,13 @@
   <p>問題と回答の登録に成功しました！</p>
   <input type="submit" name="Qint" value="問題入力画面に戻る">
   <input type="submit" name="Qview" value="問題を閲覧する">
+  <?php
+  if(isset($_POST['Qint'])) {
+      http_response_code(301);
+      header( "Location:./test.php");
+      exit;
+  }
+  ?>
 
   </form>
 </body>

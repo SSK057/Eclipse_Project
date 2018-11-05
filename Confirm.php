@@ -10,11 +10,17 @@
   <p>問題と回答の選択肢は以下の内容でよろしいですか？</p>
     <?php
        session_start();
+       $count = 0;
        $Qval = $_SESSION['Qval'];
        echo '問題文：' . $Qval . '<br>';
        foreach ($_SESSION['Aval'] as $key => $value) {
+           $count++;
            $Aval[$key] = $value;
-           echo '選択肢' . $key . '：' . $value . '<br>';
+           if($count === 4) {
+               echo '正解：' . $value . '<br>';
+           } else {
+           echo '選択肢' . $count . '：' . $value . '<br>';
+           }
        }
     ?>
   <input type="submit" value="Send!">
@@ -24,7 +30,7 @@
            $sql = new PDO('mysql:host=localhost;dbname=QandA;charset=utf8',
                           'root','root');
            echo '接続成功';
-           $sql -> query('INSERT INTO questions(question, Answer1, Answer2, Answer3, Answer4)
+           $sql -> query('INSERT INTO questions(question, answer1, answer2, answer3, correct)
                          VALUES("' . $Qval . '","' . $Aval[0] . '","' . $Aval[1] . '","' .
                          $Aval[2] . '","' . $Aval[3] . '")');
            #将来的に成功判定を導入
